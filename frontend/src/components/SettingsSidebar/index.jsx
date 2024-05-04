@@ -225,28 +225,28 @@ const SidebarOptions = ({ user = null }) => (
       btnText="System Preferences"
       icon={<SquaresFour className="h-5 w-5 flex-shrink-0" />}
       user={user}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.invites()}
       btnText="Invitation"
       icon={<EnvelopeSimple className="h-5 w-5 flex-shrink-0" />}
       user={user}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.users()}
       btnText="Users"
       icon={<Users className="h-5 w-5 flex-shrink-0" />}
       user={user}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.workspaces()}
       btnText="Workspaces"
       icon={<BookOpen className="h-5 w-5 flex-shrink-0" />}
       user={user}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.chats()}
@@ -254,7 +254,7 @@ const SidebarOptions = ({ user = null }) => (
       icon={<ChatCenteredText className="h-5 w-5 flex-shrink-0" />}
       user={user}
       flex={true}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.appearance()}
@@ -262,7 +262,7 @@ const SidebarOptions = ({ user = null }) => (
       icon={<Eye className="h-5 w-5 flex-shrink-0" />}
       user={user}
       flex={true}
-      allowedRole={["admin", "manager"]}
+      allowedRole={["admin"]}
     />
     <Option
       href={paths.settings.apiKeys()}

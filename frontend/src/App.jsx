@@ -114,7 +114,7 @@ export default function App() {
               {/* Manager */}
               <Route
                 path="/settings/security"
-                element={<ManagerRoute Component={GeneralSecurity} />}
+                element={<AdminRoute Component={GeneralSecurity} />}
               />
               <Route
                 path="/settings/privacy"
@@ -122,7 +122,7 @@ export default function App() {
               />
               <Route
                 path="/settings/appearance"
-                element={<ManagerRoute Component={GeneralAppearance} />}
+                element={<AdminRoute Component={GeneralAppearance} />}
               />
               <Route
                 path="/settings/api-keys"
@@ -130,23 +130,23 @@ export default function App() {
               />
               <Route
                 path="/settings/workspace-chats"
-                element={<ManagerRoute Component={GeneralChats} />}
+                element={<AdminRoute Component={GeneralChats} />}
               />
               <Route
                 path="/settings/system-preferences"
-                element={<ManagerRoute Component={AdminSystem} />}
+                element={<AdminRoute Component={AdminSystem} />}
               />
               <Route
                 path="/settings/invites"
-                element={<ManagerRoute Component={AdminInvites} />}
+                element={<AdminRoute Component={AdminInvites} />}
               />
               <Route
                 path="/settings/users"
-                element={<ManagerRoute Component={AdminUsers} />}
+                element={<AdminRoute Component={AdminUsers} />}
               />
               <Route
                 path="/settings/workspaces"
-                element={<ManagerRoute Component={AdminWorkspaces} />}
+                element={<AdminRoute Component={AdminWorkspaces} />}
               />
               {/* Onboarding Flow */}
               <Route path="/onboarding" element={<OnboardingFlow />} />
