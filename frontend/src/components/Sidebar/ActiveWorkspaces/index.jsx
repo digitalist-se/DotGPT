@@ -148,6 +148,7 @@ export default function ActiveWorkspaces() {
                         </button>
                       </div>
 
+                      {user?.role === "admin" ? (
                       <Link
                         type="button"
                         to={
@@ -176,6 +177,7 @@ export default function ActiveWorkspaces() {
                           />
                         </div>
                       </Link>
+                      ) : null}
                     </div>
                   ) : null}
                 </div>
