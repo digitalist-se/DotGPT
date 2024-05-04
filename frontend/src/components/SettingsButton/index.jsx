@@ -9,6 +9,7 @@ export default function SettingsButton() {
   const { user } = useUser();
 
   if (user && user?.role === "default") return null;
+  if (user && user?.role === "manager") return null;
 
   if (isInSettings)
     return (
