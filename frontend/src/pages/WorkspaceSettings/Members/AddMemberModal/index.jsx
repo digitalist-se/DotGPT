@@ -57,7 +57,7 @@ export default function AddMemberModal({ closeModal, workspace, users }) {
       user.username.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .filter((user) => user.role !== "admin")
-    .filter((user) => user.role !== "manager");
+    // .filter((user) => user.role !== "manager"); // manager can be added into a workspace
 
   return (
     <div className="relative w-full max-w-[550px] max-h-full">
