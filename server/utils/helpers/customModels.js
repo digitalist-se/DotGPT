@@ -67,6 +67,14 @@ async function openAiModels(apiKey = null) {
           organization: "OpenAi",
         },
         {
+          name: "gpt-4o",
+          id: "gpt-4o",
+          object: "model",
+          created: 1677610602,
+          owned_by: "openai",
+          organization: "OpenAi",
+        },
+        {
           name: "gpt-4",
           id: "gpt-4",
           object: "model",
@@ -178,7 +186,7 @@ async function getKoboldCPPModels(basePath = null) {
   try {
     const { OpenAI: OpenAIApi } = require("openai");
     const openai = new OpenAIApi({
-      baseURL: basePath || process.env.LMSTUDIO_BASE_PATH,
+      baseURL: basePath || process.env.KOBOLD_CPP_BASE_PATH,
       apiKey: null,
     });
     const models = await openai.models
