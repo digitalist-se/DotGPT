@@ -52,6 +52,10 @@ const KEY_MAPPING = {
     envKey: "GEMINI_LLM_MODEL_PREF",
     checks: [isNotEmpty, validGeminiModel],
   },
+  GeminiSafetySetting: {
+    envKey: "GEMINI_SAFETY_SETTING",
+    checks: [validGeminiSafetySetting],
+  },
 
   // LMStudio Settings
   LMStudioBasePath: {
@@ -350,6 +354,12 @@ const KEY_MAPPING = {
     checks: [isNotEmpty],
   },
 
+  // VoyageAi Options
+  VoyageAiApiKey: {
+    envKey: "VOYAGEAI_API_KEY",
+    checks: [isNotEmpty],
+  },
+
   // Whisper (transcription) providers
   WhisperProvider: {
     envKey: "WHISPER_PROVIDER",
@@ -522,6 +532,18 @@ function validGeminiModel(input = "") {
     : `Invalid Model type. Must be one of ${validModels.join(", ")}.`;
 }
 
+function validGeminiSafetySetting(input = "") {
+  const validModes = [
+    "BLOCK_NONE",
+    "BLOCK_ONLY_HIGH",
+    "BLOCK_MEDIUM_AND_ABOVE",
+    "BLOCK_LOW_AND_ABOVE",
+  ];
+  return validModes.includes(input)
+    ? null
+    : `Invalid Safety setting. Must be one of ${validModes.join(", ")}.`;
+}
+
 function validAnthropicModel(input = "") {
   const validModels = [
     "claude-instant-1.2",
@@ -545,6 +567,7 @@ function supportedEmbeddingModel(input = "") {
     "ollama",
     "lmstudio",
     "cohere",
+    "voyageai",
   ];
   return supported.includes(input)
     ? null

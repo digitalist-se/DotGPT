@@ -354,6 +354,8 @@ const SystemSettings = {
       // Gemini Keys
       GeminiLLMApiKey: !!process.env.GEMINI_API_KEY,
       GeminiLLMModelPref: process.env.GEMINI_LLM_MODEL_PREF || "gemini-pro",
+      GeminiSafetySetting:
+        process.env.GEMINI_SAFETY_SETTING || "BLOCK_MEDIUM_AND_ABOVE",
 
       // LMStudio Keys
       LMStudioBasePath: process.env.LMSTUDIO_BASE_PATH,
@@ -426,6 +428,9 @@ const SystemSettings = {
       // Cohere API Keys
       CohereApiKey: !!process.env.COHERE_API_KEY,
       CohereModelPref: process.env.COHERE_MODEL_PREF,
+
+      // VoyageAi API Keys
+      VoyageAiApiKey: !!process.env.VOYAGEAI_API_KEY,
     };
   },
 
