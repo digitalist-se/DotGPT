@@ -22,6 +22,7 @@ import {
   EyeSlash,
   SplitVertical,
   Microphone,
+  Robot,
 } from "@phosphor-icons/react";
 import useUser from "@/hooks/useUser";
 import { USER_BACKGROUND_COLOR } from "@/utils/constants";
@@ -257,6 +258,15 @@ const SidebarOptions = ({ user = null }) => (
       user={user}
       flex={true}
       allowedRole={["admin"]}
+    />
+
+    <Option
+      href={paths.settings.agentSkills()}
+      btnText="Agent Skills"
+      icon={<Robot className="h-5 w-5 flex-shrink-0" />}
+      user={user}
+      flex={true}
+      allowedRole={["admin", "manager"]}
     />
     <Option
       href={paths.settings.appearance()}
