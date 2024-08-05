@@ -15,7 +15,7 @@ const KEY_MAPPING = {
   // Azure OpenAI Settings
   AzureOpenAiEndpoint: {
     envKey: "AZURE_OPENAI_ENDPOINT",
-    checks: [isNotEmpty, validAzureURL],
+    checks: [isNotEmpty],
   },
   AzureOpenAiTokenLimit: {
     envKey: "AZURE_OPENAI_TOKEN_LIMIT",
@@ -100,6 +100,14 @@ const KEY_MAPPING = {
   OllamaLLMTokenLimit: {
     envKey: "OLLAMA_MODEL_TOKEN_LIMIT",
     checks: [nonZero],
+  },
+  OllamaLLMPerformanceMode: {
+    envKey: "OLLAMA_PERFORMANCE_MODE",
+    checks: [],
+  },
+  OllamaLLMKeepAliveSeconds: {
+    envKey: "OLLAMA_KEEP_ALIVE_TIMEOUT",
+    checks: [isInteger],
   },
 
   // Mistral AI API Settings
@@ -201,6 +209,28 @@ const KEY_MAPPING = {
   },
   GenericOpenAiMaxTokens: {
     envKey: "GENERIC_OPEN_AI_MAX_TOKENS",
+    checks: [nonZero],
+  },
+
+  // AWS Bedrock LLM InferenceSettings
+  AwsBedrockLLMAccessKeyId: {
+    envKey: "AWS_BEDROCK_LLM_ACCESS_KEY_ID",
+    checks: [isNotEmpty],
+  },
+  AwsBedrockLLMAccessKey: {
+    envKey: "AWS_BEDROCK_LLM_ACCESS_KEY",
+    checks: [isNotEmpty],
+  },
+  AwsBedrockLLMRegion: {
+    envKey: "AWS_BEDROCK_LLM_REGION",
+    checks: [isNotEmpty],
+  },
+  AwsBedrockLLMModel: {
+    envKey: "AWS_BEDROCK_LLM_MODEL_PREFERENCE",
+    checks: [isNotEmpty],
+  },
+  AwsBedrockLLMTokenLimit: {
+    envKey: "AWS_BEDROCK_LLM_MODEL_TOKEN_LIMIT",
     checks: [nonZero],
   },
 
@@ -339,6 +369,10 @@ const KEY_MAPPING = {
     envKey: "OPENROUTER_MODEL_PREF",
     checks: [isNotEmpty],
   },
+  OpenRouterTimeout: {
+    envKey: "OPENROUTER_TIMEOUT_MS",
+    checks: [],
+  },
 
   // Groq Options
   GroqApiKey: {
@@ -454,6 +488,11 @@ function nonZero(input = "") {
   return Number(input) <= 0 ? "Value must be greater than zero" : null;
 }
 
+function isInteger(input = "") {
+  if (isNaN(Number(input))) return "Value must be a number";
+  return Number(input);
+}
+
 function isValidURL(input = "") {
   try {
     new URL(input);
@@ -532,6 +571,7 @@ function supportedLLM(input = "") {
     "cohere",
     "litellm",
     "generic-openai",
+    "bedrock",
   ].includes(input);
   return validSelection ? null : `${input} is not a valid LLM provider.`;
 }
@@ -549,6 +589,7 @@ function validGeminiModel(input = "") {
     "gemini-1.0-pro",
     "gemini-1.5-pro-latest",
     "gemini-1.5-flash-latest",
+    "gemini-1.5-pro-exp-0801",
   ];
   return validModels.includes(input)
     ? null
@@ -620,17 +661,6 @@ function validChromaURL(input = "") {
   return input.slice(-1) === "/"
     ? `Chroma Instance URL should not end in a trailing slash.`
     : null;
-}
-
-function validAzureURL(input = "") {
-  try {
-    new URL(input);
-    if (!input.includes("openai.azure.com") && !input.includes("microsoft.com"))
-      return "Valid Azure endpoints must contain openai.azure.com OR microsoft.com";
-    return null;
-  } catch {
-    return "Not a valid URL";
-  }
 }
 
 function validOpenAiTokenLimit(input = "") {

@@ -23,6 +23,8 @@ import KoboldCPPLogo from "@/media/llmprovider/koboldcpp.png";
 import TextGenWebUILogo from "@/media/llmprovider/text-generation-webui.png";
 import CohereLogo from "@/media/llmprovider/cohere.png";
 import LiteLLMLogo from "@/media/llmprovider/litellm.png";
+import AWSBedrockLogo from "@/media/llmprovider/bedrock.png";
+
 import PreLoader from "@/components/Preloader";
 import OpenAiOptions from "@/components/LLMSelection/OpenAiOptions";
 import GenericOpenAiOptions from "@/components/LLMSelection/GenericOpenAiOptions";
@@ -43,6 +45,7 @@ import CohereAiOptions from "@/components/LLMSelection/CohereAiOptions";
 import KoboldCPPOptions from "@/components/LLMSelection/KoboldCPPOptions";
 import TextGenWebUIOptions from "@/components/LLMSelection/TextGenWebUIOptions";
 import LiteLLMOptions from "@/components/LLMSelection/LiteLLMOptions";
+import AWSBedrockLLMOptions from "@/components/LLMSelection/AwsBedrockLLMOptions";
 
 import LLMItem from "@/components/LLMSelection/LLMItem";
 import { CaretUpDown, MagnifyingGlass, X } from "@phosphor-icons/react";
@@ -212,6 +215,19 @@ export const AVAILABLE_LLM_PROVIDERS = [
     ],
   },
   {
+    name: "AWS Bedrock",
+    value: "bedrock",
+    logo: AWSBedrockLogo,
+    options: (settings) => <AWSBedrockLLMOptions settings={settings} />,
+    description: "Run powerful foundation models privately with AWS Bedrock.",
+    requiredConfig: [
+      "AwsBedrockLLMAccessKeyId",
+      "AwsBedrockLLMAccessKey",
+      "AwsBedrockLLMRegion",
+      "AwsBedrockLLMModel",
+    ],
+  },
+  {
     name: "Native",
     value: "native",
     logo: AnythingLLMIcon,
@@ -340,7 +356,7 @@ export default function GeneralLLMPreference() {
                   />
                 )}
                 {searchMenuOpen ? (
-                  <div className="absolute top-0 left-0 w-full max-w-[640px] max-h-[310px] overflow-auto white-scrollbar min-h-[64px] bg-dark-input rounded-lg flex flex-col justify-between cursor-pointer border-2 border-[#46C8FF] z-20">
+                  <div className="absolute top-0 left-0 w-full max-w-[640px] max-h-[310px] overflow-auto white-scrollbar min-h-[64px] bg-dark-input rounded-lg flex flex-col justify-between cursor-pointer border-2 border-primary-button z-20">
                     <div className="w-full flex flex-col gap-y-1">
                       <div className="flex items-center sticky top-0 border-b border-[#9CA3AF] mx-4 bg-dark-input">
                         <MagnifyingGlass
@@ -353,7 +369,7 @@ export default function GeneralLLMPreference() {
                           name="llm-search"
                           autoComplete="off"
                           placeholder="Search all LLM providers"
-                          className="-ml-4 my-2 bg-transparent z-20 pl-12 h-[38px] w-full px-4 py-1 text-sm outline-none focus:border-white text-white placeholder:text-white placeholder:font-medium"
+                          className="-ml-4 my-2 bg-transparent z-20 pl-12 h-[38px] w-full px-4 py-1 text-sm outline-none text-white placeholder:text-white placeholder:font-medium"
                           onChange={(e) => setSearchQuery(e.target.value)}
                           ref={searchInputRef}
                           onKeyDown={(e) => {
@@ -387,7 +403,7 @@ export default function GeneralLLMPreference() {
                   </div>
                 ) : (
                   <button
-                    className="w-full max-w-[640px] h-[64px] bg-dark-input rounded-lg flex items-center p-[14px] justify-between cursor-pointer border-2 border-transparent hover:border-[#46C8FF] transition-all duration-300"
+                    className="w-full max-w-[640px] h-[64px] bg-dark-input rounded-lg flex items-center p-[14px] justify-between cursor-pointer border-2 border-transparent hover:border-primary-button transition-all duration-300"
                     type="button"
                     onClick={() => setSearchMenuOpen(true)}
                   >
