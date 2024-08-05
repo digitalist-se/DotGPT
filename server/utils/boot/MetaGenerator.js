@@ -39,27 +39,27 @@ class MetaGenerator {
     return [
       {
         tag: "link",
-        props: { type: "image/svg+xml", href: "/favicon.png" },
+        props: { type: "image/svg+xml", href: "https://assets-global.website-files.com/64e4af11c324d21e5e5a8e24/64f8494a315ed203920b4f32_favicon_logo.png" },
         content: null,
       },
       {
         tag: "title",
         props: null,
-        content: "AnythingLLM | Your personal LLM trained on anything",
+        content: "DotGPT | Digitalist Open Tech",
       },
 
       {
         tag: "meta",
         props: {
           name: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
       {
         tag: "meta",
         props: {
           description: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
 
@@ -67,20 +67,20 @@ class MetaGenerator {
       { tag: "meta", props: { property: "og:type", content: "website" } },
       {
         tag: "meta",
-        props: { property: "og:url", content: "https://anythingllm.com" },
+        props: { property: "og:url", content: "https://digitalist.se" },
       },
       {
         tag: "meta",
         props: {
           property: "og:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
       {
         tag: "meta",
         props: {
           property: "og:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
       {
@@ -88,7 +88,7 @@ class MetaGenerator {
         props: {
           property: "og:image",
           content:
-            "https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/images/promo.png",
+            "https://assets-global.website-files.com/64e4af11c324d21e5e5a8e24/652c25c3161daabd6b4e8b75_digitalist_open_graph.png",
         },
       },
 
@@ -99,20 +99,20 @@ class MetaGenerator {
       },
       {
         tag: "meta",
-        props: { property: "twitter:url", content: "https://anythingllm.com" },
+        props: { property: "twitter:url", content: "https://digitalist.se" },
       },
       {
         tag: "meta",
         props: {
           property: "twitter:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
       {
         tag: "meta",
         props: {
           property: "twitter:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "DotGPT | Digitalist Open Tech",
         },
       },
       {
@@ -120,12 +120,12 @@ class MetaGenerator {
         props: {
           property: "twitter:image",
           content:
-            "https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/images/promo.png",
+            "https://assets-global.website-files.com/64e4af11c324d21e5e5a8e24/652c25c3161daabd6b4e8b75_digitalist_open_graph.png",
         },
       },
 
-      { tag: "link", props: { rel: "icon", href: "/favicon.png" } },
-      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.png" } },
+      { tag: "link", props: { rel: "icon", href: "https://assets-global.website-files.com/64e4af11c324d21e5e5a8e24/64f8494a315ed203920b4f32_favicon_logo.png" } },
+      { tag: "link", props: { rel: "apple-touch-icon", href: "https://assets-global.website-files.com/64e4af11c324d21e5e5a8e24/64f84951ce75548f3a197878_webclip_logo.png" } },
     ];
   }
 
@@ -191,7 +191,7 @@ class MetaGenerator {
           props: null,
           content:
             customTitle ??
-            "AnythingLLM | Your personal LLM trained on anything",
+            "DotGPT | Digitalist Open Tech",
         },
       ];
     }
