@@ -263,24 +263,24 @@ const SidebarOptions = ({ user = null, t }) => (
             {
               btnText: t("settings.users"),
               href: paths.settings.users(),
-              roles: ["admin", "manager"],
+              roles: ["admin"],
             },
             {
               btnText: t("settings.workspaces"),
               href: paths.settings.workspaces(),
-              roles: ["admin", "manager"],
+              roles: ["admin"],
             },
             {
               hidden: !canViewChatHistory,
               btnText: t("settings.workspace-chats"),
               href: paths.settings.chats(),
               flex: true,
-              roles: ["admin", "manager"],
+              roles: ["admin"],
             },
             {
               btnText: t("settings.invites"),
               href: paths.settings.invites(),
-              roles: ["admin", "manager"],
+              roles: ["admin"],
             },
           ]}
         />
@@ -298,7 +298,7 @@ const SidebarOptions = ({ user = null, t }) => (
           href={paths.settings.appearance()}
           user={user}
           flex={true}
-          roles={["admin", "manager"]}
+          roles={["admin"]}
         />
         <Option
           btnText={t("settings.tools")}
