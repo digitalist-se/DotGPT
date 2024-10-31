@@ -120,6 +120,9 @@ function getLLMProvider({ provider = null, model = null } = {}) {
     case "togetherai":
       const { TogetherAiLLM } = require("../AiProviders/togetherAi");
       return new TogetherAiLLM(embedder, model);
+    case "fireworksai":
+      const { FireworksAiLLM } = require("../AiProviders/fireworksAi");
+      return new FireworksAiLLM(embedder, model);
     case "perplexity":
       const { PerplexityLLM } = require("../AiProviders/perplexity");
       return new PerplexityLLM(embedder, model);
@@ -156,6 +159,15 @@ function getLLMProvider({ provider = null, model = null } = {}) {
     case "bedrock":
       const { AWSBedrockLLM } = require("../AiProviders/bedrock");
       return new AWSBedrockLLM(embedder, model);
+    case "deepseek":
+      const { DeepSeekLLM } = require("../AiProviders/deepseek");
+      return new DeepSeekLLM(embedder, model);
+    case "apipie":
+      const { ApiPieLLM } = require("../AiProviders/apipie");
+      return new ApiPieLLM(embedder, model);
+    case "xai":
+      const { XAiLLM } = require("../AiProviders/xai");
+      return new XAiLLM(embedder, model);
     default:
       throw new Error(
         `ENV: No valid LLM_PROVIDER value found in environment! Using ${process.env.LLM_PROVIDER}`
@@ -240,6 +252,9 @@ function getLLMProviderClass({ provider = null } = {}) {
     case "togetherai":
       const { TogetherAiLLM } = require("../AiProviders/togetherAi");
       return TogetherAiLLM;
+    case "fireworksai":
+      const { FireworksAiLLM } = require("../AiProviders/fireworksAi");
+      return FireworksAiLLM;
     case "perplexity":
       const { PerplexityLLM } = require("../AiProviders/perplexity");
       return PerplexityLLM;
@@ -276,6 +291,15 @@ function getLLMProviderClass({ provider = null } = {}) {
     case "bedrock":
       const { AWSBedrockLLM } = require("../AiProviders/bedrock");
       return AWSBedrockLLM;
+    case "deepseek":
+      const { DeepSeekLLM } = require("../AiProviders/deepseek");
+      return DeepSeekLLM;
+    case "apipie":
+      const { ApiPieLLM } = require("../AiProviders/apipie");
+      return ApiPieLLM;
+    case "xai":
+      const { XAiLLM } = require("../AiProviders/xai");
+      return XAiLLM;
     default:
       return null;
   }

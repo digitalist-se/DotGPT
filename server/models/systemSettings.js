@@ -16,8 +16,6 @@ function isNullOrNaN(value) {
 const SystemSettings = {
   protectedFields: ["multi_user_mode"],
   publicFields: [
-    "limit_user_messages",
-    "message_limit",
     "footer_data",
     "support_email",
     "text_splitter_chunk_size",
@@ -33,8 +31,6 @@ const SystemSettings = {
     "meta_page_favicon",
   ],
   supportedFields: [
-    "limit_user_messages",
-    "message_limit",
     "logo_filename",
     "telemetry_id",
     "footer_data",
@@ -103,6 +99,7 @@ const SystemSettings = {
             "bing-search",
             "serply-engine",
             "searxng-engine",
+            "tavily-search",
           ].includes(update)
         )
           throw new Error("Invalid SERP provider.");
@@ -224,12 +221,18 @@ const SystemSettings = {
       TextToSpeechProvider: process.env.TTS_PROVIDER || "native",
       TTSOpenAIKey: !!process.env.TTS_OPEN_AI_KEY,
       TTSOpenAIVoiceModel: process.env.TTS_OPEN_AI_VOICE_MODEL,
+
       // Eleven Labs TTS
       TTSElevenLabsKey: !!process.env.TTS_ELEVEN_LABS_KEY,
       TTSElevenLabsVoiceModel: process.env.TTS_ELEVEN_LABS_VOICE_MODEL,
       // Piper TTS
       TTSPiperTTSVoiceModel:
         process.env.TTS_PIPER_VOICE_MODEL ?? "en_US-hfc_female-medium",
+      // OpenAI Generic TTS
+      TTSOpenAICompatibleKey: !!process.env.TTS_OPEN_AI_COMPATIBLE_KEY,
+      TTSOpenAICompatibleVoiceModel:
+        process.env.TTS_OPEN_AI_COMPATIBLE_VOICE_MODEL,
+      TTSOpenAICompatibleEndpoint: process.env.TTS_OPEN_AI_COMPATIBLE_ENDPOINT,
 
       // --------------------------------------------------------
       // Agent Settings & Configs
@@ -242,6 +245,14 @@ const SystemSettings = {
       AgentBingSearchApiKey: !!process.env.AGENT_BING_SEARCH_API_KEY || null,
       AgentSerplyApiKey: !!process.env.AGENT_SERPLY_API_KEY || null,
       AgentSearXNGApiUrl: process.env.AGENT_SEARXNG_API_URL || null,
+      AgentTavilyApiKey: !!process.env.AGENT_TAVILY_API_KEY || null,
+
+      // --------------------------------------------------------
+      // Compliance Settings
+      // --------------------------------------------------------
+      // Disable View Chat History for the whole instance.
+      DisableViewChatHistory:
+        "DISABLE_VIEW_CHAT_HISTORY" in process.env || false,
     };
   },
 
@@ -441,6 +452,10 @@ const SystemSettings = {
       TogetherAiApiKey: !!process.env.TOGETHER_AI_API_KEY,
       TogetherAiModelPref: process.env.TOGETHER_AI_MODEL_PREF,
 
+      // Fireworks AI API Keys
+      FireworksAiLLMApiKey: !!process.env.FIREWORKS_AI_LLM_API_KEY,
+      FireworksAiLLMModelPref: process.env.FIREWORKS_AI_LLM_MODEL_PREF,
+
       // Perplexity AI Keys
       PerplexityApiKey: !!process.env.PERPLEXITY_API_KEY,
       PerplexityModelPref: process.env.PERPLEXITY_MODEL_PREF,
@@ -490,8 +505,11 @@ const SystemSettings = {
       GenericOpenAiKey: !!process.env.GENERIC_OPEN_AI_API_KEY,
       GenericOpenAiMaxTokens: process.env.GENERIC_OPEN_AI_MAX_TOKENS,
 
+      AwsBedrockLLMConnectionMethod:
+        process.env.AWS_BEDROCK_LLM_CONNECTION_METHOD || "iam",
       AwsBedrockLLMAccessKeyId: !!process.env.AWS_BEDROCK_LLM_ACCESS_KEY_ID,
       AwsBedrockLLMAccessKey: !!process.env.AWS_BEDROCK_LLM_ACCESS_KEY,
+      AwsBedrockLLMSessionToken: !!process.env.AWS_BEDROCK_LLM_SESSION_TOKEN,
       AwsBedrockLLMRegion: process.env.AWS_BEDROCK_LLM_REGION,
       AwsBedrockLLMModel: process.env.AWS_BEDROCK_LLM_MODEL_PREFERENCE,
       AwsBedrockLLMTokenLimit: process.env.AWS_BEDROCK_LLM_MODEL_TOKEN_LIMIT,
@@ -502,6 +520,18 @@ const SystemSettings = {
 
       // VoyageAi API Keys
       VoyageAiApiKey: !!process.env.VOYAGEAI_API_KEY,
+
+      // DeepSeek API Keys
+      DeepSeekApiKey: !!process.env.DEEPSEEK_API_KEY,
+      DeepSeekModelPref: process.env.DEEPSEEK_MODEL_PREF,
+
+      // APIPie LLM API Keys
+      ApipieLLMApiKey: !!process.env.APIPIE_LLM_API_KEY,
+      ApipieLLMModelPref: process.env.APIPIE_LLM_MODEL_PREF,
+
+      // xAI LLM API Keys
+      XAIApiKey: !!process.env.XAI_LLM_API_KEY,
+      XAIModelPref: process.env.XAI_LLM_MODEL_PREF,
     };
   },
 

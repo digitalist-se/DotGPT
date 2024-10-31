@@ -8,6 +8,7 @@ import AnthropicLogo from "@/media/llmprovider/anthropic.png";
 import GeminiLogo from "@/media/llmprovider/gemini.png";
 import OllamaLogo from "@/media/llmprovider/ollama.png";
 import TogetherAILogo from "@/media/llmprovider/togetherai.png";
+import FireworksAILogo from "@/media/llmprovider/fireworksai.jpeg";
 import LMStudioLogo from "@/media/llmprovider/lmstudio.png";
 import LocalAiLogo from "@/media/llmprovider/localai.png";
 import MistralLogo from "@/media/llmprovider/mistral.jpeg";
@@ -19,6 +20,9 @@ import KoboldCPPLogo from "@/media/llmprovider/koboldcpp.png";
 import TextGenWebUILogo from "@/media/llmprovider/text-generation-webui.png";
 import LiteLLMLogo from "@/media/llmprovider/litellm.png";
 import AWSBedrockLogo from "@/media/llmprovider/bedrock.png";
+import DeepSeekLogo from "@/media/llmprovider/deepseek.png";
+import APIPieLogo from "@/media/llmprovider/apipie.png";
+import XAILogo from "@/media/llmprovider/xai.png";
 
 import CohereLogo from "@/media/llmprovider/cohere.png";
 import ZillizLogo from "@/media/vectordbs/zilliz.png";
@@ -107,6 +111,14 @@ export const LLM_SELECTION_PRIVACY = {
     ],
     logo: TogetherAILogo,
   },
+  fireworksai: {
+    name: "FireworksAI",
+    description: [
+      "Your chats will not be used for training",
+      "Your prompts and document text used in response creation are visible to Fireworks AI",
+    ],
+    logo: FireworksAILogo,
+  },
   mistral: {
     name: "Mistral",
     description: [
@@ -186,6 +198,25 @@ export const LLM_SELECTION_PRIVACY = {
       "You model and chat contents are subject to the agreed EULA for AWS and the model provider on aws.amazon.com",
     ],
     logo: AWSBedrockLogo,
+  },
+  deepseek: {
+    name: "DeepSeek",
+    description: ["Your model and chat contents are visible to DeepSeek"],
+    logo: DeepSeekLogo,
+  },
+  apipie: {
+    name: "APIpie.AI",
+    description: [
+      "Your model and chat contents are visible to APIpie in accordance with their terms of service.",
+    ],
+    logo: APIPieLogo,
+  },
+  xai: {
+    name: "xAI",
+    description: [
+      "Your model and chat contents are visible to xAI in accordance with their terms of service.",
+    ],
+    logo: XAILogo,
   },
 };
 

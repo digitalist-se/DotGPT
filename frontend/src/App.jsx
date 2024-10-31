@@ -9,6 +9,7 @@ import PrivateRoute, {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "@/pages/Login";
+import SimpleSSOPassthrough from "@/pages/Login/SSO/simple";
 import OnboardingFlow from "@/pages/OnboardingFlow";
 import i18n from "./i18n";
 
@@ -22,7 +23,6 @@ const WorkspaceChat = lazy(() => import("@/pages/WorkspaceChat"));
 const AdminUsers = lazy(() => import("@/pages/Admin/Users"));
 const AdminInvites = lazy(() => import("@/pages/Admin/Invitations"));
 const AdminWorkspaces = lazy(() => import("@/pages/Admin/Workspaces"));
-const AdminSystem = lazy(() => import("@/pages/Admin/System"));
 const AdminLogs = lazy(() => import("@/pages/Admin/Logging"));
 const AdminAgents = lazy(() => import("@/pages/Admin/Agents"));
 const GeneralChats = lazy(() => import("@/pages/GeneralSettings/Chats"));
@@ -78,6 +78,8 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<PrivateRoute Component={Main} />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/sso/simple" element={<SimpleSSOPassthrough />} />
+
                 <Route
                   path="/workspace/:slug/settings/:tab"
                   element={<ManagerRoute Component={WorkspaceSettings} />}
@@ -167,10 +169,6 @@ export default function App() {
                 <Route
                   path="/settings/workspace-chats"
                   element={<AdminRoute Component={GeneralChats} />}
-                />
-                <Route
-                  path="/settings/system-preferences"
-                  element={<ManagerRoute Component={AdminSystem} />}
                 />
                 <Route
                   path="/settings/invites"
